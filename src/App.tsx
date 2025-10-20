@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="finance-card">
-        <h1 className="title">💰 Sistema de Controle Financeiro com Sheets API wwww</h1>
+        <h1 className="title">💰 TESTE Sistema de Controle Financeiro com Sheets API wwww</h1>
 
         <form onSubmit={handleSubmit} className="finance-form">
           <div className="form-group">
