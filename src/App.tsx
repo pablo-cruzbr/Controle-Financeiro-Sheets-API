@@ -16,9 +16,8 @@ const App = () => {
   const [data, setData] = useState("");
   const [custo, setCusto] = useState("");
   const [APIdata, setAPIdata] = useState<Lancamento[]>([]);
-  const [refresh, setRefresh] = useState(false); // usado para forçar atualização
-
-  // Função para buscar os dados da API
+  const [refresh, setRefresh] = useState(false); 
+  
   const fetchData = async () => {
     try {
       const response = await axios.get<Lancamento[]>(
@@ -118,9 +117,24 @@ const App = () => {
             />
           </div>
 
+        <div className="inline">
+
           <button type="submit" className="btn-submit">
             Adicionar Despesa
           </button>
+
+                    <a
+            href="https://docs.google.com/spreadsheets/d/11JPt7batoTXnKC38eeF7haODvy_kaMqp3LsxLujDkog/edit?gid=0#gid=0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button type="button" className="btn-submit">
+              Visualizar Planilha
+            </button>
+          </a>
+
+        </div>
+
         </form>
 
         <h2 className="subtitle">
