@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import logo from './assets/logoexcel.svg'
+
 //import axios from "axios";
 
 const App = () => {
@@ -41,7 +43,10 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="finance-card">
-        <h1 className="title">Sistema de Controle Financeiro com Sheets API</h1>
+        <img src={logo} alt="Logo do sistema" className="logo" />
+
+        <h1 className="title">Sistema de Controle Financeiro</h1>
+        <h1 className="title2">Integração com Google Planilhas</h1>
 
         <form onSubmit={handleSubmit} className="finance-form">
           <div className="form-group">

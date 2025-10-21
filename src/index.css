@@ -1,26 +1,146 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-.app-container{
+body {
+  background-color: #f4f3ee;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.app-container {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.finance-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 550;
+  font-style: normal;
+  color: #15803D;
   text-align: center;
 }
 
-.finance-card{
-  width: 100%;
-  border: 1px solid red;
-  border-radius: 10px;
-}
-
-.title{
-  font-size: 35px;
-  font-family: "Poppins", sans-serif;
+.title2 {
+   font-size: 25px;
   font-weight: 550;
+  margin-top: -20px;
   font-style: normal;
+  color: #000000;
+  text-align: center;
 }
 
-label{
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  text-align: right;
 
+.finance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;  
+  gap: 6px;
+}
+
+label {
+  font-weight: 500;
+  color: #333;
+  text-align: left; 
+  padding-left: 10px; 
+}
+
+input {
+  border: 2px solid transparent;
+  width: 60%; 
+  height: 2.8em;
+  padding-left: 0.8em;
+  outline: none;
+  background-color: #F3F3F3;
+  border-radius: 10px;
+  transition: all 0.3s;
+  font-size: 15px;
+  margin: 0 auto; 
+}
+
+input:hover,
+input:focus {
+  border: 2px solid #13AA52;
+  box-shadow: 0px 0px 0px 5px rgba(19, 170, 82, 0.2);
+  background-color: white;
+}
+
+
+.btn-submit {
+  align-self: center;
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px 30px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.subtitle {
+  margin-top: 40px;
+  font-size: 24px;
+  color: #15803D;
+  text-align: center;
+}
+
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  color: #15803D;
+  font-weight: 600;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.total-label {
+  font-weight: 600;
+}
+
+.total-value {
+  font-weight: 700;
+  color: #13aa52;
 }
