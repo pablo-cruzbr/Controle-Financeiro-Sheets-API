@@ -1,41 +1,51 @@
 import React, { useState } from "react";
 import "./App.css";
-import logo from './assets/logoexcel.svg'
-
-//import axios from "axios";
+import logo from './assets/logoexcel.svg';
+import axios from "axios";
 
 const App = () => {
-  const [formData, setFormData] = useState({
-    compra: "",
-    categoria: "",
-    data: "",
-    custo: "",
-  });
-
+  const [compra, setCompra] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [data, setData] = useState("");
+  const [custo, setCusto] = useState("");
   const [historico, setHistorico] = useState<any[]>([]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (Object.values(formData).some((val) => val === "")) {
-      alert("Por favor, preencha todos os campos!");
+    if (!compra || !categoria || !data || !custo) {
+      alert("Preencha todos os campos!");
       return;
     }
 
-    const novoLancamento = { ...formData, id: Date.now() };
+    const novoLancamento = { id: Date.now(), compra, categoria, data, custo };
     setHistorico([...historico, novoLancamento]);
 
-    setFormData({
-      compra: "",
-      categoria: "",
-      data: "",
-      custo: "",
-    });
+    try {
+     await axios.post(
+  "https://api.sheetbest.com/sheets/fbfcb510-6471-418f-beb3-7c6aeb4cd4e6",
+   {
+    compra,
+    categoria,
+    data,
+    custo
+  },
+  {
+    headers: {
+      "X-Api-Key": "R4R615rQ!fvkWK9N$EM2-Rg_1fgwvrlS@dFcyIJT6%66-o@FXu3xCEdQTU#lX$l8"
+    }
+  }
+);
+
+
+      // Limpa campos
+      setCompra("");
+      setCategoria("");
+      setData("");
+      setCusto("");
+    } catch (error) {
+      console.error("Erro ao enviar os dados:", error);
+    }
   };
 
   const total = historico.reduce((acc, item) => acc + parseFloat(item.custo), 0);
@@ -54,8 +64,8 @@ const App = () => {
             <input
               name="compra"
               placeholder="Ex: Supermercado"
-              value={formData.compra}
-              onChange={handleInputChange}
+              value={compra}
+              onChange={(e) => setCompra(e.target.value)}
             />
           </div>
 
@@ -64,8 +74,8 @@ const App = () => {
             <input
               name="categoria"
               placeholder="Ex: Alimentação"
-              value={formData.categoria}
-              onChange={handleInputChange}
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
             />
           </div>
 
@@ -74,8 +84,8 @@ const App = () => {
             <input
               type="date"
               name="data"
-              value={formData.data}
-              onChange={handleInputChange}
+              value={data}
+              onChange={(e) => setData(e.target.value)}
             />
           </div>
 
@@ -85,8 +95,8 @@ const App = () => {
               type="number"
               name="custo"
               placeholder="Ex: 89.90"
-              value={formData.custo}
-              onChange={handleInputChange}
+              value={custo}
+              onChange={(e) => setCusto(e.target.value)}
             />
           </div>
 
