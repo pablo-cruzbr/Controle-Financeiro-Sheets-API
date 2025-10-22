@@ -4,7 +4,8 @@ Aplicação **React + Vite** desenvolvida para o **gerenciamento de despesas e c
 
 <img src="https://raw.githubusercontent.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/main/src/assets/Sistemadecontrole-financeiro.png" alt="projeto" width="850" />
 <img src="https://raw.githubusercontent.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/main/src/assets/projeto.png" alt="projeto" width="850" />
-![Prévia do Projeto](https://raw.githubusercontent.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/main/src/assets/Sistemadecontrole-financeiro.png)
+<img src="src/components/projeto.png" alt="MovieFlix" width="850" align="center">
+
 
 
 O sistema permite adicionar novas despesas através de um formulário dinâmico — ao clicar em **"Adicionar Despesa"**, as informações são registradas **tanto no frontend** quanto **automaticamente na planilha**, mantendo os dados sempre sincronizados em tempo real.  
