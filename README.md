@@ -1,4 +1,4 @@
-# Sistema de Controle Financeiro de Compras
+# Sistema de Controle Financeiro de Compras + API Google Planilhas
 
 Aplicação **React + Vite** desenvolvida para o **gerenciamento de despesas e controle financeiro**, com **integração direta ao Google Planilhas**.  
 
