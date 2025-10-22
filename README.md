@@ -2,8 +2,6 @@
 
 Aplicação **React + Vite** desenvolvida para o **gerenciamento de despesas e controle financeiro**, com **integração direta ao Google Planilhas**.  
 
-<img src="https://raw.githubusercontent.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/main/src/assets/Sistemadecontrole-financeiro.png" alt="projeto" width="850" />
-<img src="https://raw.githubusercontent.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/main/src/assets/projeto.png" alt="projeto" width="850" />
 <img src="src/components/projeto.png" alt="MovieFlix" width="850" align="center">
 
 
