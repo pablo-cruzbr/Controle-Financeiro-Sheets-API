@@ -1,4 +1,4 @@
-# 🧾 Projeto — Controle Financeiro de Compras
+# Sistema de Controle Financeiro de Compras
 
 Aplicação **React + Vite** desenvolvida para o **gerenciamento de despesas e controle financeiro**, com **integração direta ao Google Planilhas**.  
 
