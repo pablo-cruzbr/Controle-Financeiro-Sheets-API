@@ -33,13 +33,13 @@ A comunicação entre o app e o Google Planilhas é feita por meio de uma **chav
 
 ```bash
 # Clone este repositório
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/Controle-Financeiro-Sheets-API.git
 
 # Acesse a pasta do projeto
-cd nome-do-repositorio
+cd controle-Financeiro-Sheets-API
 
 # Instale as dependências
-npm install
+yarn install
 
 # Execute o servidor de desenvolvimento
-npm run dev
+yarn run dev
