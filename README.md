@@ -2,7 +2,7 @@
 
 Aplicação **React + Vite** desenvolvida para o **gerenciamento de despesas e controle financeiro**, com **integração direta ao Google Planilhas**.  
 
-<img width="850" height="1961" alt="projeto" src="https://github.com/user-attachments/assets/702b55f7-b918-4110-a851-beecf793eab1" />
+<img width="850" height="1961" alt="projeto" src="(https://github.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/blob/main/src/assets/Sistemadecontrole-financeiro.png)" />
 
 
 O sistema permite adicionar novas despesas através de um formulário dinâmico — ao clicar em **"Adicionar Despesa"**, as informações são registradas **tanto no frontend** quanto **automaticamente na planilha**, mantendo os dados sempre sincronizados em tempo real.  
