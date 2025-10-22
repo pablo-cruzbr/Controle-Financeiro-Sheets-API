@@ -1,30 +1,49 @@
-# Sistema de Controle Financeiro - React + Vite
-<img width="850" height="1961" alt="projeto" src="https://github.com/user-attachments/assets/702b55f7-b918-4110-a851-beecf793eab1" />
+# 🧾 Projeto — Controle Financeiro de Compras
 
-## Demo do Projeto: 
-Demo do Projeto:
-<a href="https://pablo-cruzbr.github.io/Galeria-de-Videos/" target="_blank">Clique aqui para ver a demo</a>
+Aplicação **React + Vite** desenvolvida para o **gerenciamento de despesas e controle financeiro**, com **integração direta ao Google Planilhas**.  
+
+<img src="https://raw.githubusercontent.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/main/src/assets/Sistemadecontrole-financeiro.png" alt="projeto" width="850" />
+<img src="https://raw.githubusercontent.com/pablo-cruzbr/Controle-Financeiro-Sheets-API/main/src/assets/Sistemadecontrole-financeiro.png" alt="projeto" width="850" />
 
 
-Este projeto é um **visualizador de vídeos do YouTube** construído com **React** e **Vite**, consumindo a **YouTube Data API v3** para exibir vídeos de uma playlist específica diretamente na página, sem precisar sair dela.
-
----
-
-## 🛠 Tecnologias utilizadas
-
-- **Vite**: ferramenta de build rápida para React e projetos modernos.  
-- **React**: biblioteca para construção de interfaces interativas.  
-- **YouTube Data API v3 (playlistItems)**: rota GET para listar vídeos de uma playlist específica.  
-- **useState / useEffect**: hooks do React para gerenciamento de estado e efeitos colaterais.  
-- **API Key do Google Developer**: necessária para autenticar e liberar o acesso à API do YouTube.  
+O sistema permite adicionar novas despesas através de um formulário dinâmico — ao clicar em **"Adicionar Despesa"**, as informações são registradas **tanto no frontend** quanto **automaticamente na planilha**, mantendo os dados sempre sincronizados em tempo real.  
 
 ---
 
-## 🚀 Funcionalidades
+## 🚀 Tecnologias e Bibliotecas Utilizadas
 
-- Listagem de vídeos de uma playlist do YouTube em **grid responsivo**.  
-- Exibição de **thumbnail e título** de cada vídeo.  
-- Ao clicar em um vídeo, um **player incorporado** é aberto na página, com reprodução automática.  
-- Possibilidade de **fechar o player** sem sair da página.  
-- Layout responsivo, funcionando bem em desktop e mobile.  
+- **React + Vite** — estrutura base do projeto, garantindo performance e desenvolvimento ágil.  
+- **Axios** — utilizada para realizar requisições HTTP (`POST` e `GET`) com a API externa, armazenando os dados em `useState` e exibindo-os dinamicamente através do `useEffect`.  
+- **Google Sheets + Sheet.best API** — responsáveis por transformar a planilha em uma **API REST**, permitindo o envio e recuperação de dados de forma automática e integrada.  
 
+---
+
+## ⚙️ Principais Funcionalidades
+
+- 🧮 Adicionar novas despesas via formulário.  
+- 🔄 Sincronização automática entre frontend e Google Planilhas.  
+- 📊 Visualização dinâmica dos dados salvos diretamente na tela.  
+- 🌐 Integração simples e eficiente com a Sheet.best API.  
+
+---
+
+## 🔑 Integração com API
+
+A comunicação entre o app e o Google Planilhas é feita por meio de uma **chave de API e uma URL de conexão**, fornecidas pela **Sheet.best**, garantindo o envio e recebimento seguro dos dados.  
+
+---
+
+## 💻 Como Executar o Projeto
+
+```bash
+# Clone este repositório
+git clone https://github.com/Controle-Financeiro-Sheets-API.git
+
+# Acesse a pasta do projeto
+cd controle-Financeiro-Sheets-API
+
+# Instale as dependências
+yarn install
+
+# Execute o servidor de desenvolvimento
+yarn run dev
