@@ -33,6 +33,10 @@ A comunicação entre o app e o Google Planilhas é feita por meio de uma **chav
 
 ---
 
+## 🔑 Futuras Melhorias
+
+- Criar versão Mobile (carteira digital) utilizando React Native
+
 ## 💻 Como Executar o Projeto
 
 ```bash
