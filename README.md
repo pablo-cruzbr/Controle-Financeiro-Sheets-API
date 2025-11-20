@@ -23,7 +23,10 @@ O sistema permite adicionar novas despesas através de um formulário dinâmico 
 - 🧮 Adicionar novas despesas via formulário.  
 - 🔄 Sincronização automática entre frontend e Google Planilhas.  
 - 📊 Visualização dinâmica dos dados salvos diretamente na tela.  
-- 🌐 Integração simples e eficiente com a Sheet.best API.  
+- 🌐 Integração simples e eficiente com a 
+<a href="https://sheetbest.com/?gad_source=1&gad_campaignid=21005879900&gbraid=0AAAAA9S5-CiSfa3zNJ0tPMOTCJE5KuFBv&gclid=CjwKCAiAlfvIBhA6EiwAcErpyR0E3M2EZ8cyN2AaSiy9jnIKBb05nzMBfyQwgAKr0nydw-bfK74d3hoC0_kQAvD_BwE
+" target="_blank">Google Sheets API</a>
+ 
 
 ---
 
