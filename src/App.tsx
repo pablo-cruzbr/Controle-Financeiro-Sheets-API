@@ -19,51 +19,46 @@ const App = () => {
   const [refresh, setRefresh] = useState(false); 
   
   const fetchData = async () => {
-    try {
-      const response = await axios.get<Lancamento[]>(
-        "https://api.sheetbest.com/sheets/fbfcb510-6471-418f-beb3-7c6aeb4cd4e6"
-      );
-      setAPIdata(response.data);
-    } catch (error) {
-      console.error("Erro ao buscar dados da API:", error);
-    }
-  };
+  try {
+    const response = await axios.get<Lancamento[]>(
+      "https://api.steinhq.com/v1/storages/69acdb9aaffba40a625b5380/Sheet1"
+    );
+    setAPIdata(response.data);
+  } catch (error) {
+    console.error("Erro ao buscar dados da API:", error);
+  }
+};
 
-  useEffect(() => {
-    fetchData();
-  }, [refresh]);
+useEffect(() => {
+  fetchData();
+}, [refresh]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!compra || !categoria || !data || !custo) {
-      alert("Preencha todos os campos!");
-      return;
-    }
+  if (!compra || !categoria || !data || !custo) {
+    alert("Preencha todos os campos!");
+    return;
+  }
 
-    const novoLancamento: Lancamento = { compra, categoria, data, custo };
+  const novoLancamento: Lancamento = { compra, categoria, data, custo };
 
-    try {
-      await axios.post(
-        "https://api.sheetbest.com/sheets/fbfcb510-6471-418f-beb3-7c6aeb4cd4e6",
-        novoLancamento,
-        {
-          headers: {
-            "X-Api-Key": "R4R615rQ!fvkWK9N$EM2-Rg_1fgwvrlS@dFcyIJT6%66-o@FXu3xCEdQTU#lX$l8"
-          }
-        }
-      );
+  try {
+    await axios.post(
+      "https://api.steinhq.com/v1/storages/69acdb9aaffba40a625b5380/Sheet1",
+      [novoLancamento] 
+    );
 
-      setCompra("");
-      setCategoria("");
-      setData("");
-      setCusto("");
+    setCompra("");
+    setCategoria("");
+    setData("");
+    setCusto("");
 
-      setRefresh(prev => !prev); 
-    } catch (error) {
-      console.error("Erro ao enviar os dados:", error);
-    }
-  };
+    setRefresh(prev => !prev); 
+  } catch (error) {
+    console.error("Erro ao enviar os dados:", error);
+  }
+};
 
   const total = APIdata.reduce((acc, item) => acc + parseFloat(item.custo), 0);
 
@@ -124,7 +119,7 @@ const App = () => {
           </button>
 
           <a
-            href="https://docs.google.com/spreadsheets/d/11JPt7batoTXnKC38eeF7haODvy_kaMqp3LsxLujDkog/edit?gid=0#gid=0"
+            href="https://docs.google.com/spreadsheets/d/10D3DWKL0qc4vkevLTP-rRSznEUzBsywUkHuUZCK8gVw/edit?gid=0#gid=0"
             target="_blank"
             rel="noopener noreferrer"
           >
