@@ -19,49 +19,49 @@ const App = () => {
   const [APIdata, setAPIdata] = useState<Lancamento[]>([]);
   const [refresh, setRefresh] = useState(false); 
   
+  const API_URL = import.meta.env.VITE_STEIN_URL;
+
   const fetchData = async () => {
-  try {
-    const response = await axios.get<Lancamento[]>(
-      "https://api.steinhq.com/v1/storages/69acdb9aaffba40a625b5380/Sheet1"
-    );
-    setAPIdata(response.data);
-  } catch (error) {
-    console.error("Erro ao buscar dados da API:", error);
-  }
-};
+    try {
+      const response = await axios.get<Lancamento[]>(`${API_URL}/Sheet1`);
+      setAPIdata(Array.isArray(response.data) ? response.data : []);
+    } catch (error) {
+      console.error("Erro ao buscar dados da API:", error);
+    }
+  };
 
-useEffect(() => {
-  fetchData();
-}, [refresh]);
+  useEffect(() => {
+    if (API_URL) fetchData();
+  }, [refresh, API_URL]);
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  if (!compra || !categoria || !data || !custo) {
-    alert("Preencha todos os campos!");
-    return;
-  }
+    if (!compra || !categoria || !data || !custo) {
+      alert("Preencha todos os campos!");
+      return;
+    }
 
-  const novoLancamento: Lancamento = { compra, categoria, data, custo };
+    const novoLancamento: Lancamento = { compra, categoria, data, custo };
 
-  try {
-    await axios.post(
-      "https://api.steinhq.com/v1/storages/69acdb9aaffba40a625b5380/Sheet1",
-      [novoLancamento] 
-    );
+    try {
+      await axios.post(`${API_URL}/Sheet1`, [novoLancamento]);
 
-    setCompra("");
-    setCategoria("");
-    setData("");
-    setCusto("");
+      setCompra("");
+      setCategoria("");
+      setData("");
+      setCusto("");
 
-    setRefresh(prev => !prev); 
-  } catch (error) {
-    console.error("Erro ao enviar os dados:", error);
-  }
-};
+      setRefresh(prev => !prev); 
+    } catch (error) {
+      console.error("Erro ao enviar os dados:", error);
+    }
+  };
 
-  const total = APIdata.reduce((acc, item) => acc + parseFloat(item.custo), 0);
+  const total = APIdata.reduce((acc, item) => {
+    const valor = parseFloat(item.custo);
+    return acc + (isNaN(valor) ? 0 : valor);
+  }, 0);
 
   return (
     <div className="app-container">
@@ -70,12 +70,11 @@ const handleSubmit = async (e: React.FormEvent) => {
 
         <h1 className="title">Sistema de Controle Financeiro</h1>
         <h1 className="title2">Integração com Google Planilhas</h1>
-        
+
         <form onSubmit={handleSubmit} className="finance-form">
           <div className="form-group">
             <label>Descrição da Compra</label>
             <input
-              name="compra"
               placeholder="Ex: Supermercado"
               value={compra}
               onChange={(e) => setCompra(e.target.value)}
@@ -85,7 +84,6 @@ const handleSubmit = async (e: React.FormEvent) => {
           <div className="form-group">
             <label>Categoria</label>
             <input
-              name="categoria"
               placeholder="Ex: Alimentação"
               value={categoria}
               onChange={(e) => setCategoria(e.target.value)}
@@ -96,7 +94,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             <label>Data</label>
             <input
               type="date"
-              name="data"
               value={data}
               onChange={(e) => setData(e.target.value)}
             />
@@ -106,33 +103,31 @@ const handleSubmit = async (e: React.FormEvent) => {
             <label>Valor (R$)</label>
             <input
               type="number"
-              name="custo"
+              step="0.01"
               placeholder="Ex: 89.90"
               value={custo}
               onChange={(e) => setCusto(e.target.value)}
             />
           </div>
 
-        <div className="inline">
-
-          <button type="submit" className="btn-submit">
-            Adicionar Despesa
-          </button>
-
-          <a
-            href="https://docs.google.com/spreadsheets/d/10D3DWKL0qc4vkevLTP-rRSznEUzBsywUkHuUZCK8gVw/edit?gid=0#gid=0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button type="button" className="btn-submit">
-              Visualizar Planilha
+          <div className="inline">
+            <button type="submit" className="btn-submit">
+              Adicionar Despesa
             </button>
-          </a>
 
-        </div>
-         <RechartsComponent data={APIdata} />
-
+            <a
+              href="https://docs.google.com/spreadsheets/d/10D3DWKL0qc4vkevLTP-rRSznEUzBsywUkHuUZCK8gVw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button type="button" className="btn-submit btn-view">
+                Visualizar Planilha
+              </button>
+            </a>
+          </div>
         </form>
+
+        <RechartsComponent data={APIdata} />
 
         <h2 className="subtitle">
           Histórico de Lançamentos ({APIdata.length})
@@ -157,15 +152,15 @@ const handleSubmit = async (e: React.FormEvent) => {
                     <td>{item.compra}</td>
                     <td>{item.categoria}</td>
                     <td>{item.data}</td>
-                    <td className="text-right">R$ {parseFloat(item.custo).toFixed(2)}</td>
+                    <td className="text-right">
+                      R$ {parseFloat(item.custo).toFixed(2)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
               <tfoot>
                 <tr>
-                  <td colSpan={3} className="text-right total-label">
-                    Total:
-                  </td>
+                  <td colSpan={3} className="text-right total-label">Total:</td>
                   <td className="text-right total-value">
                     R$ {total.toFixed(2)}
                   </td>
