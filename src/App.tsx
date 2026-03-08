@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import logo from './assets/logoexcel.svg';
 import axios from "axios";
+import RechartsComponent from "./components/RechartsComponent";
 
 interface Lancamento {
   compra: string;
@@ -69,7 +70,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
         <h1 className="title">Sistema de Controle Financeiro</h1>
         <h1 className="title2">Integração com Google Planilhas</h1>
-
+        
         <form onSubmit={handleSubmit} className="finance-form">
           <div className="form-group">
             <label>Descrição da Compra</label>
@@ -129,6 +130,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           </a>
 
         </div>
+         <RechartsComponent data={APIdata} />
 
         </form>
 
