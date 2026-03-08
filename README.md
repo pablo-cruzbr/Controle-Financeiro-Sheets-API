@@ -17,6 +17,17 @@ O sistema permite adicionar novas despesas através de um formulário dinâmico 
 - **Google Sheets + Sheet.best API** — responsáveis por transformar a planilha em uma **API REST**, permitindo o envio e recuperação de dados de forma automática e integrada.  
 
 ---
+## 🚀 Novas Funcionalidades (v2.5.0)
+
+### 📊 Dashboard Interativo com Recharts
+O sistema agora conta com uma camada de visualização de dados dinâmica:
+- **Gráfico de Pizza:** Agrupamento automático de gastos por categoria.
+- **Cálculo de Saldo em Tempo Real:** Lógica inteligente que diferencia Receitas (entradas) de Despesas (saídas).
+- **Interface Responsiva:** Gráficos que se adaptam ao tamanho da tela usando `ResponsiveContainer`.
+
+### 🔒 Segurança e Infraestrutura
+- **Variáveis de Ambiente:** Integração segura com a API do SteinHQ via Vercel (`.env`).
+- **Componentização:** Arquitetura limpa com a separação do componente de gráficos (`RechartsComponent.tsx`).
 
 ## ⚙️ Principais Funcionalidades
 
