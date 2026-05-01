@@ -15,21 +15,23 @@ interface Props {
 const RechartsComponent: React.FC<Props> = ({ data }) => {
   const saldoTotal = data.reduce((acc, item) => {
     const valor = parseFloat(item.custo) || 0;
-    const cat = item.categoria.toLowerCase();
+    const cat = (item.categoria ?? "").toLowerCase(); 
+
     if (cat === "receita" || cat === "salário" || cat === "entrada") {
       return acc + valor;
     }
     return acc - valor;
   }, 0);
 
-  const dadosGrafico = data.reduce((acc: any[], item) => {
-    const existente = acc.find(x => x.name === item.categoria);
+ const dadosGrafico = data.reduce((acc: any[], item) => {
+    const nomeCategoria = item.categoria || "Sem Categoria";
+    const existente = acc.find(x => x.name === nomeCategoria);
     const valor = parseFloat(item.custo) || 0;
     
     if (existente) {
       existente.value += valor;
     } else {
-      acc.push({ name: item.categoria, value: valor });
+      acc.push({ name: nomeCategoria, value: valor });
     }
     return acc;
   }, []);
